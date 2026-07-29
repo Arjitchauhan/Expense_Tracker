@@ -7,10 +7,10 @@ const typeInput = document.getElementById("type");
 const categoryInput = document.getElementById("category");
 const dateInput = document.getElementById("date");
 
-let transactions = [];
+let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
 transactionForm.addEventListener("submit", function (e) {
-
+    
     e.preventDefault();
 
     const transaction = {
@@ -67,3 +67,5 @@ function saveTransactions() {
     );
 
 }
+
+displayTransactions();
