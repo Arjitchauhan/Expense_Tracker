@@ -24,6 +24,8 @@ transactionForm.addEventListener("submit", function (e) {
 
     transactions.push(transaction);
 
+    saveTransactions();
+
     displayTransactions();
 
     transactionForm.reset();
@@ -47,14 +49,21 @@ function displayTransactions() {
             </div>
 
             <div class="${transaction.type === "Income" ? "income" : "expense"}">
-
                 ${transaction.type === "Income" ? "+" : "-"}₹${transaction.amount}
-
             </div>
         `;
 
         transactionList.appendChild(div);
 
     });
+
+}
+
+function saveTransactions() {
+
+    localStorage.setItem(
+        "transactions",
+        JSON.stringify(transactions)
+    );
 
 }
