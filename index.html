@@ -9,7 +9,122 @@
           content="width=device-width, initial-scale=1.0">
 
     <title>Expense Manager</title>
+    <div class="container">
 
+    <h1>Expense Manager</h1>
+
+    <!-- Summary Cards -->
+
+    <div class="summary">
+
+        <div class="card">
+            <h3>Balance</h3>
+            <h2 id="balance">₹0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Income</h3>
+            <h2 id="income">₹0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Expense</h3>
+            <h2 id="expense">₹0</h2>
+        </div>
+
+    </div>
+
+    <!-- Form -->
+
+    <div class="form-section">
+
+        <h2>Add Transaction</h2>
+
+        <form id="transactionForm">
+
+            <input
+                type="text"
+                id="title"
+                placeholder="Enter Title"
+                required>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Enter Amount"
+                required>
+
+            <select id="type">
+
+                <option value="Income">Income</option>
+
+                <option value="Expense">Expense</option>
+
+            </select>
+
+            <select id="category">
+
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Bills</option>
+                <option>Salary</option>
+                <option>Other</option>
+
+            </select>
+
+            <input
+                type="date"
+                id="date"
+                required>
+
+            <button type="submit">
+
+                Add Transaction
+
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Filter -->
+
+    <div class="filter">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search Transaction">
+
+        <select id="filterCategory">
+
+            <option value="All">All Categories</option>
+
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Salary</option>
+            <option>Other</option>
+
+        </select>
+
+    </div>
+
+    <!-- Transaction List -->
+
+    <div class="transaction-section">
+
+        <h2>Transactions</h2>
+
+        <div id="transactionList">
+
+        </div>
+
+    </div>
+
+</div>
     <link rel="stylesheet"
           href="css/style.css">
 
