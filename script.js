@@ -68,4 +68,29 @@ function saveTransactions() {
 
 }
 
+function updateSummary() {
+
+    let income = 0;
+    let expense = 0;
+
+    transactions.forEach(function (transaction) {
+
+        if (transaction.type === "Income") {
+
+            income += transaction.amount;
+
+        } else {
+
+            expense += transaction.amount;
+
+        }
+
+    });
+
+    document.getElementById("income").textContent = `₹${income}`;
+    document.getElementById("expense").textContent = `₹${expense}`;
+    document.getElementById("balance").textContent = `₹${income - expense}`;
+
+}
+
 displayTransactions();
