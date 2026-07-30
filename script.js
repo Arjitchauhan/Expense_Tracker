@@ -27,6 +27,8 @@ transactionForm.addEventListener("submit", function (e) {
     saveTransactions();
 
     displayTransactions();
+    
+    updateSummary();
 
     transactionForm.reset();
 
@@ -94,3 +96,4 @@ function updateSummary() {
 }
 
 displayTransactions();
+updateSummary()
