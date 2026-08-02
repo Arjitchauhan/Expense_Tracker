@@ -1,11 +1,13 @@
 const transactionForm = document.getElementById("transactionForm");
 const transactionList = document.getElementById("transactionList");
+const clearDataBtn = document.getElementById("clearData");
 
 const titleInput = document.getElementById("title");
 const amountInput = document.getElementById("amount");
 const typeInput = document.getElementById("type");
 const categoryInput = document.getElementById("category");
 const dateInput = document.getElementById("date");
+const searchInput = document.getElementById("search");
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
 
@@ -34,11 +36,34 @@ transactionForm.addEventListener("submit", function (e) {
 
 });
 
+clearDataBtn.addEventListener("click", function () {
+
+    localStorage.removeItem("transactions");
+
+    transactions = [];
+
+    displayTransactions();
+
+    updateSummary();
+
+});
+
+searchInput.addEventListener("input", function () {
+
+    displayTransactions();
+
+});
+
 function displayTransactions() {
 
     transactionList.innerHTML = "";
 
-    transactions.forEach(function (transaction) {
+    const searchText = searchInput.value.toLowerCase();
+    const filteredTransactions = transactions.filter(function (transaction) {
+        return transaction.title.toLowerCase().includes(searchText);
+    });
+
+    filteredTransactions.forEach(function (transaction) {
 
         const div = document.createElement("div");
 
