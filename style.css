@@ -117,10 +117,26 @@ button{
 
 }
 
+.card{
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.transaction{
+    transition:0.3s;
+}
+
+.transaction:hover{
+    transform:translateY(-2px);
+}
+
+button{
+    transition:0.3s;
+    cursor:pointer;
+}
+
 button:hover{
-
-    background:#1d4ed8;
-
+    transform:translateY(-2px);
+    opacity:0.9;
 }
 
 .filter{
@@ -134,6 +150,22 @@ button:hover{
 .filter input{
 
     flex:2;
+
+}
+
+input,
+select{
+    transition:0.3s;
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:#4CAF50;
+
+    box-shadow:0 0 5px rgba(76,175,80,0.3);
 
 }
 
@@ -241,4 +273,11 @@ button:hover{
 
 }
 
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:20px;
+    font-size:18px;
 }

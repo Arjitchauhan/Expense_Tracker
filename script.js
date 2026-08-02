@@ -6,7 +6,10 @@ const titleInput = document.getElementById("title");
 const amountInput = document.getElementById("amount");
 const typeInput = document.getElementById("type");
 const categoryInput = document.getElementById("category");
+
 const dateInput = document.getElementById("date");
+dateInput.value = new Date().toISOString().split("T")[0];
+
 const searchInput = document.getElementById("search");
 
 let transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -29,22 +32,31 @@ transactionForm.addEventListener("submit", function (e) {
     saveTransactions();
 
     displayTransactions();
-    
+ 
     updateSummary();
 
     transactionForm.reset();
+    dateInput.value = new Date().toISOString().split("T")[0];
 
 });
 
 clearDataBtn.addEventListener("click", function () {
 
-    localStorage.removeItem("transactions");
+    clearDataBtn.addEventListener("click", function () {
 
-    transactions = [];
+    if (confirm("Are you sure you want to delete all transactions permanently?")) {
 
-    displayTransactions();
+        localStorage.removeItem("transactions");
 
-    updateSummary();
+        transactions = [];
+
+        displayTransactions();
+
+        updateSummary();
+
+    }
+
+});
 
 });
 
@@ -62,6 +74,11 @@ function displayTransactions() {
     const filteredTransactions = transactions.filter(function (transaction) {
         return transaction.title.toLowerCase().includes(searchText);
     });
+    
+    if (filteredTransactions.length === 0) {
+    transactionList.innerHTML = "<p class='empty'>No transactions found.</p>";
+    return;
+    }
 
     filteredTransactions.forEach(function (transaction) {
 
